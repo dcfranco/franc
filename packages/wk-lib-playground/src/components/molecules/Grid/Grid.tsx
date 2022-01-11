@@ -1,4 +1,4 @@
-import { ViewAttributeWithRelations } from '../../../interfaces/view-attribute-with-relations';
+import { ViewWithRelations } from '../../../interfaces/view-with-relations';
 import React, { FC } from 'react';
 import './Grid.scss';
 import {
@@ -8,23 +8,48 @@ import {
   TableBody,
   TableRecord,
 } from '../../atoms';
+import { TableWithRelations } from '../../../interfaces/table-with-relations';
 
 type Props = {
-  attributes: ViewAttributeWithRelations[];
+  view: ViewWithRelations;
+  table: TableWithRelations;
   records: any[];
+  selectedRecord?: any;
+  onSelect?: (record: any) => void;
+  onDblClick?: (record: any) => void;
 };
 
-const Grid: FC<Props> = ({ attributes, records }) => {
+const Grid: FC<Props> = ({
+  view,
+  table,
+  records,
+  selectedRecord,
+  onSelect,
+  onDblClick
+}) => {
   return (
     <Table>
       <TableHead>
-        {attributes.map((field) => {
+        {view.attributes.map((field) => {
           return <TableColumn name={field.name}>{field.label}</TableColumn>;
         })}
       </TableHead>
       <TableBody>
         {records.map((rec) => (
-          <TableRecord key={rec.id} record={rec} columns={attributes} />
+          <TableRecord
+            onClick={onSelect}
+            onDblClick={(record) => {
+              onSelect(record)
+              setTimeout(() => onDblClick(record))
+            }}
+            key={rec.id}
+            isSelected={
+              selectedRecord &&
+              selectedRecord[table.pkField] === rec[table.pkField]
+            }
+            record={rec}
+            columns={view.attributes}
+          />
         ))}
       </TableBody>
     </Table>

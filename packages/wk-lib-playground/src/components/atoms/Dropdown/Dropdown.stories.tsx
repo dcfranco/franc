@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { useRef } from 'react';
 import { Dropdown, DropdownAction } from '.';
+import { Button } from '../Button';
 import { Container } from '../Container';
 import { DropdownRef } from './Dropdown';
 
@@ -15,8 +16,9 @@ const Template: ComponentStory<typeof Dropdown> = (args, ctx) => {
   return (
     <Container>
       <div className="p-5">
-        <button
-          className="btn btn-dark d-block"
+        <Button
+          type='dark'
+          className='d-block'
           onClick={(ev) =>
             dropdownRef.current &&
             dropdownRef.current?.show(ev as unknown as Event)
@@ -32,7 +34,7 @@ const Template: ComponentStory<typeof Dropdown> = (args, ctx) => {
               );
             })}
           </Dropdown>
-        </button>
+        </Button>
       </div>
     </Container>
   );

@@ -1,6 +1,8 @@
+import { ViewAttributeComponentEnum } from "./view-attribute-with-relations";
+
 /* tslint:disable */
 export interface ViewAttribute {
-  component: 'TEXT' | 'NUMBER' | 'COMBO' | 'RADIO' | 'CHECKBOX' | 'TEXTAREA' | 'LIST' | 'DATETIME';
+  component: ViewAttributeComponentEnum;
   createdAt?: string;
   createdBy?: string;
   defaultValue?: string;

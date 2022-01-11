@@ -1,10 +1,12 @@
 /* tslint:disable */
 
+import { ViewAttributeComponentEnum } from "./view-attribute-with-relations";
+
 /**
  * (tsType: Partial<ViewAttribute>, schemaOptions: { partial: true })
  */
 export interface ViewAttributePartial {
-  component?: 'TEXT' | 'NUMBER' | 'COMBO' | 'RADIO' | 'CHECKBOX' | 'TEXTAREA' | 'LIST' | 'DATETIME';
+  component?: ViewAttributeComponentEnum;
   createdAt?: string;
   createdBy?: string;
   defaultValue?: string;

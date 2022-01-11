@@ -4,6 +4,46 @@ $dropdown-z-index: 1092;
 $dropdown-overlay-z-index: 1091;
 $side-navigation-z-index: 1090;
 
+$green: #40b258;
+$blue: #004c70;
+$danger: #f44336;
+$warning: #ff9800;
+$success: #019310;
+$info: #004c70;
+$black: #000;
+$white: #ffffff;
+$gray: #f0f1f4;
+
+$dropdown-z-index: 1092;
+$dropdown-overlay-z-index: 1091;
+$navbar-bg-color: $blue;
+
+$gray-color: #404040;
+$gray-100: #eceeef;
+$gray-200: #dddddd;
+$gray-300: #78909c;
+$gray-400: #818a91;
+$gray-500: #455a64;
+$gray-600: #37474f;
+$gray-700: #263238;
+$gray-800: #424547;
+$gray-900: #373a3c;
+$gray-1000: #4A4A4A;
+$gray-1100: #373a3c;
+
+$theme-colors: (
+    'primary':    $blue,
+    "secondary":  $gray-500,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $gray,
+    "dark":       $gray-500,
+    "low-dark":   $gray-300,
+    "gray":       $gray-200
+  );
+  
 @import '~bootstrap/scss/bootstrap.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');

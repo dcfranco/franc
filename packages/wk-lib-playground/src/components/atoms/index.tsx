@@ -11,3 +11,5 @@ export * from './Select';
 export * from './Datepicker';
 export * from './Panel';
 export * from './Table';
+export * from './Button';
+

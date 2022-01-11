@@ -1,10 +1,13 @@
 /* tslint:disable */
 
+import { Option } from "../components";
+import { ViewAttributeComponentEnum } from "./view-attribute-with-relations";
+
 /**
  * (tsType: Partial<ViewAttributeWithRelations>, schemaOptions: { includeRelations: true, partial: 'deep' })
  */
 export interface ViewAttributePartialWithRelations {
-  component?: 'TEXT' | 'NUMBER' | 'COMBO' | 'RADIO' | 'CHECKBOX' | 'TEXTAREA' | 'LIST' | 'DATETIME';
+  component?: ViewAttributeComponentEnum;
   createdAt?: string;
   createdBy?: string;
   defaultValue?: string;
@@ -26,6 +29,6 @@ export interface ViewAttributePartialWithRelations {
   updatedAt?: string;
   updatedBy?: string;
   viewId?: number;
-
+  options?: Option[];
   [key: string]: any;
 }

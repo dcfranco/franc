@@ -60,7 +60,7 @@ export const Select: FC<Props> = ({
         isDisabled={disabled}
         name={name}
         inputId={id ?? name}
-        value={value}        
+        value={options.filter((op) => op.value === value)[0]}
       />
       {invalid && (
         <div className="combobox__error">{error}</div>

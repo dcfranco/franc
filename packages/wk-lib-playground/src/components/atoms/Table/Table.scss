@@ -55,7 +55,7 @@
         &:hover:not(.selected) {
           background-color: #e8e8e8;
         }
-        &:nth-child(odd) {
+        &:nth-child(odd):not(.selected) {
           background-color: #f1f1f1;
 
         }

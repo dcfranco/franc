@@ -1,0 +1,7 @@
+@import "../../common.scss";
+
+.btn {
+  &:disabled {
+    color: $gray-600 !important;
+  }
+}

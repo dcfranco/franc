@@ -175,8 +175,8 @@ const Template: ComponentStory<typeof Table> = () => {
               })}
             </TableHead>
             <TableBody>
-              {mockRecords.map((rec) => (
-                <TableRecord key={rec.id} record={rec} columns={mock.attributes}>
+              {mockRecords.map((rec, i) => (
+                <TableRecord key={rec.id} isSelected={i == 1} record={rec} columns={mock.attributes}>
                   test
                 </TableRecord>
               ))}

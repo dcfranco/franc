@@ -41,7 +41,7 @@ export const SelectFormik: FC<Props> = ({
       }}
       disabled={disabled}
       name={field.name}
-      value={field.value || ''}
+      value={field.value}
     />
   );
 };

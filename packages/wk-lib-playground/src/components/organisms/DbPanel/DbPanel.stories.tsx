@@ -1,7 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
-import { Grid } from '.';
 import { ViewAttributeComponentEnum } from '../../../interfaces/view-attribute-with-relations';
+import React from 'react';
+import { DbPanel } from '.';
+import { DbPanelWithRelations } from '../../../interfaces/db-panel-with-relations';
 import { Navbar, Container, Feature, Panel } from '../../atoms';
 
 const features = [
@@ -18,11 +19,11 @@ const features = [
   },
 ];
 export default {
-  title: 'Components/Molecules/Grid',
-  component: Grid,
-} as ComponentMeta<typeof Grid>;
+  title: 'Components/Organisms/DbPanel',
+  component: DbPanel,
+} as ComponentMeta<typeof DbPanel>;
 
-const mock = {
+const metadata: DbPanelWithRelations = {
   "createdAt": null,
   "createdBy": null,
   "updatedAt": null,
@@ -123,7 +124,6 @@ const mock = {
         "mask": null,
         "tableId": 2,
         options: [{ label: 't', value: '1'}]
-
       },
       {
         "createdAt": null,
@@ -182,27 +182,27 @@ const mockRecords = [{
   actions: '1',
   description: 'Test'
 }, {
-  id: 'id',
+  id: 'id2',
   name: 'Name',
   effect: 'Effect',
   actions: '2',
   description: 'Test'
 },
 {
-  id: 'id',
+  id: 'id3',
   name: 'Name',
   effect: 'Effect',
   actions: '3',
   description: 'Test'
 }]
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Grid> = () => {
+const Template: ComponentStory<typeof DbPanel> = () => {
   return (
     <Container>
       <Navbar features={features} />
       <Feature>
         <Panel>
-          <Grid view={mock.view} table={mock.table} records={mockRecords} />
+          <DbPanel metadata={metadata} records={mockRecords} />
         </Panel>
       </Feature>
     </Container>

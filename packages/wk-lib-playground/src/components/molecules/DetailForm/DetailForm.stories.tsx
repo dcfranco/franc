@@ -102,6 +102,7 @@ const mock = {
       defaultValue: null,
       mask: null,
       tableId: 2,
+      options: [{ label: 't', value: '1'}]
     },
     {
       createdAt: null,

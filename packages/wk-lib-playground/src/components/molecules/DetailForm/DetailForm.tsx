@@ -30,7 +30,7 @@ const DetailForm: NextPage<{
             }
           >
         >((fieldsFromAttributes, field) => {
-          if (field.isVisible !== false && field.name !== pkFieldName) {
+          if (field.isVisible !== false) {
             const value =
               state === DetailFormStateEnum.NEW ? null : record[field.name];
             field.defaultValue = value;
@@ -64,12 +64,12 @@ const DetailForm: NextPage<{
     return [];
   }, [attributes, pkFieldName]);
   return (
-    <Formik initialValues={{}} onSubmit={() => {}}>
+    <Formik initialValues={record || {}} onSubmit={() => {}}>
       <form className="detail-form">
         {rows.length > 0 &&
           rows.map((row) => {
             return (
-              <div key={row.line} className="form-row mb-md-2">
+              <div key={row.line} className="form-row">
                 {row.fields.map((field) => {
                   return (
                     <div className={`form-group col-md-${field.size} mb-0`}>
@@ -83,6 +83,7 @@ const DetailForm: NextPage<{
                           placeholder={field.desc}
                           name={field.name}
                           component={InputFormik}
+                          disabled={field.name === pkFieldName}
                         />
                       )}
                       {field.component === ViewAttributeComponentEnum.CHECKBOX && (
@@ -108,7 +109,6 @@ const DetailForm: NextPage<{
                           className="text-black"
                           placeholder={field.desc}
                           name={field.name}
-                          options={[{ label: 't', value: '1'}]}
                           component={SelectFormik}
                         />
                       )}
