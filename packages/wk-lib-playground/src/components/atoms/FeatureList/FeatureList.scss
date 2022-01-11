@@ -1,0 +1,42 @@
+@import '../../common.scss';
+
+.feature-list {
+
+
+  &__items {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  &__item {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+
+    &:hover {
+      cursor: pointer;
+
+      span {
+        text-decoration: underline;
+      }
+    }
+
+    i {
+      color: #fff;
+      font-size: 40px;
+      text-shadow: 1px 1px 1px #000;
+    }
+
+    span {
+      display: block;
+      margin-top: 5px;
+      color: #fff;
+      font-size: 12px;
+      text-shadow: 1px 1px 1px #000;
+    }
+  }
+}

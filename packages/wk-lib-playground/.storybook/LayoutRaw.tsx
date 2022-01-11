@@ -1,4 +1,5 @@
 import React from 'react';
+import './Globals.scss';
 
 interface IProps {
   className?: string;

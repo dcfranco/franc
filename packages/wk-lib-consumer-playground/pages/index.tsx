@@ -18,6 +18,8 @@ export default function Home() {
         </h1>
         <b.Button label="Default" />
         <b.StyledButton label="Styled" primary />
+        <b.Button label="Styled"  />
+
       </main>
     </div>
   );

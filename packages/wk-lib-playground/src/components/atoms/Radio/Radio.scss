@@ -1,0 +1,97 @@
+@import '../../common.scss';
+
+.radio-label {
+    padding: 0px;
+    line-height: normal !important;
+    font-size: 13px;
+    min-width: fit-content;
+    color: #dbe8f9;
+    text-shadow: 0px 1px 1px #000;
+    margin-bottom: 5px !important;
+    margin-top: 10px; 
+}
+/* Customize the label (the container) */
+.radio-container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 25px;
+  margin-top: 5px;
+  color: $white !important;
+  font-size: 13px;
+  color: #dbe8f9 !important;
+  line-height: 1.5 !important;
+  text-shadow: 0px 1px 1px #000;
+
+  &.invalid {
+    color: theme-color('danger') !important;
+
+    .radio-checkmark {
+      border: 2px solid theme-color('danger') !important;
+    }
+  }
+}
+
+/* Hide the browser's default radio */
+.radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio */
+.radio-checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  background-color: $white;
+  transition: all ease-in-out 0.1s;
+  border: 1px solid theme-color('low-dark');
+}
+
+/* On mouse-over, add a grey background color */
+.radio-container:hover input ~ .radio-checkmark {
+  background-color: rgba(theme-color('primary'), 0.2);
+}
+
+/* When the radio is checked, add a blue background */
+.radio-container input:checked ~ .radio-checkmark {
+  background-color: #dbe8f9;
+  border-color: #dbe8f9;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.radio-checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.radio-container input:checked ~ .radio-checkmark:after {
+  display: block;
+}
+
+/* Style the radio-checkmark/indicator */
+.radio-container .radio-checkmark:after {
+  left: 4px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border: solid theme-color('primary');
+  background-color: theme-color('primary');
+  border-width: 2px 2px 2px 2px;
+  border-radius: 10px;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

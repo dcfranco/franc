@@ -1,0 +1,10 @@
+@import '../../common.scss';
+
+.footer {
+  &__copyright {
+    color: $white;
+    font-size: 10px;
+    text-shadow: 1px 1px 1px $black;
+    margin-bottom: 10px;
+  }
+}

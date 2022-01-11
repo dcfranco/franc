@@ -1,0 +1,18 @@
+@import '../../common.scss';
+
+
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto 0px;
+  width: 100%;
+    span {
+      font-size: 14px !important;
+      color: #fff;
+      text-shadow: 1px 1px 1px #000;
+      letter-spacing: 2px;
+      font-weight: normal;
+    }
+}

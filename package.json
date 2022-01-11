@@ -6,19 +6,14 @@
   ],
   "scripts": {
     "dev": "lerna run --parallel dev",
-    "apps-1-and-2:dev": "lerna run --parallel --scope @weknow-network/wk-lib-consumer-playground --scope @weknow-network/wk-lib-consumer-playground-npm dev",
     "build": "lerna run --stream --parallel build",
-    "build-sync": "lerna run --stream build",
+    "build-sync": "lerna run build",
     "lint": "lerna run --stream --parallel lint",
     "test": "lerna run --stream --parallel test",
     "storybook": "lerna run --stream --parallel storybook",
     "build-storybook": "lerna run --parallel build-storybook",
     "lib:build": "lerna run --stream --scope @weknow-network/wk-lib-playground build",
-    "app:build": "lerna run --stream --scope={@weknow-network/wk-lib-consumer-playground, @weknow-network/wk-lib-consumer-playground-npm} build",
-    "app-1:build": "lerna run --stream --scope @weknow-network/wk-lib-consumer-playground build",
-    "app-2:build": "lerna run --stream --scope @weknow-network/wk-lib-consumer-playground-npm build",
-    "app-1:start": "lerna run --stream --scope @weknow-network/wk-lib-consumer-playground start",
-    "app-2:start": "lerna run --stream --scope @weknow-network/wk-lib-consumer-playground-npm start"
+    "app:build": "lerna run --stream --scope @weknow-network/wk-lib-consumer-playground build"
   },
   "devDependencies": {
     "lerna": "^4.0.0"

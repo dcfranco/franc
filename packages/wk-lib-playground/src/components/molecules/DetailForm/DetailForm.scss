@@ -1,0 +1,66 @@
+@import '../../common.scss';
+
+.detail-form {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  width: 100%;  
+  .input, .textarea {
+    display: block !important;
+  }
+
+  .input__label,
+  .textarea__label,
+  .combobox__label,
+  .checkbox-container {
+    color: $black !important;
+    text-shadow: unset !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    padding: 0px 1px; 
+  }
+
+  .input__label,
+  .textarea__label,
+  .combobox__label,
+  .checkbox-container {
+    margin-bottom: 2px !important;
+  }
+
+  .input__label,
+  .combobox__label,
+  .textarea__label {
+    margin-top: 0px !important;
+  }
+
+  .checkbox-container {
+    margin-top: 15px !important;
+
+    &:hover input ~ .checkmark {
+      background-color: $white;
+    }
+
+    .checkmark {
+      border-color: $gray-300 !important;
+      border-width: 2px;
+    }
+    .checkmark:after {
+      left: 6px;
+      top: 2px;
+    }
+    input:checked ~ .checkmark {
+      background-color: $white;
+      border-color: $gray-300 !important;
+    }
+  }
+
+  .input__wrapper input, .textarea textarea, .combobox__select__control {
+    background-color: $white !important;
+    color: $black !important;
+    border-color: $gray-300 !important;
+    border-width: 2px !important;
+    &::placeholder {
+      color: $gray-300 !important;
+    }
+  }
+}

@@ -1,3 +1,18 @@
 {
-  "extends": "../../tsconfig.lib.json"
+  "extends": "../../tsconfig.lib.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["src/components/*"],
+      "constants/*": ["src/constants/*"],
+      "hooks/*": ["src/hooks/*"],
+      "interfaces/*": ["src/interfaces/*"],
+      "models/*": ["src/models/*"],
+      "pages/*": ["src/pages/*"],
+      "services/*": ["src/services/*"],
+      "shared/*": ["src/shared/*"],
+      "core/*": ["src/core/*"],
+      "styles/*": ["src/style/*"]
+    }
+  }
 }

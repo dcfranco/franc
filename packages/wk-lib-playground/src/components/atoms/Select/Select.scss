@@ -1,0 +1,106 @@
+@import '../../common.scss';
+
+.combobox {
+  min-width: 100%;
+  margin: 5px 0px;
+  min-height: 40px;
+  & > i {
+    position: absolute;
+    right: 35px;
+    top: 54px;
+    opacity: 0.4;
+  }
+
+  &__label {
+    text-align: right;
+    padding: 0px;
+    line-height: normal !important;
+    font-size: 13px;
+    min-width: fit-content;
+    color: #dbe8f9;
+    text-shadow: 0px 1px 1px #000;
+    margin-right: 10px;
+    margin-bottom: 5px !important;
+    margin-top: 10px; 
+  }
+
+  &__error {
+    color: red !important;
+    text-shadow: 0px 1px 1px #000;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  &__select {
+    &__control {
+      border: 1px solid $gray-300 !important;
+      min-height: 34px !important;
+      max-height: 34px !important;
+      font-size: 14px;
+      outline: none !important;
+      box-shadow: unset !important;
+    }
+
+    &__value {
+      &-container {
+        padding: 0 15px 0 15px !important;
+      }
+    }
+
+    &__menu {
+      z-index: 9999;
+    }
+
+    &__placeholder {
+      font-weight: normal;
+      color:  $gray-300 !important;
+      font-size: 13px;
+    }
+
+    &__indicator {
+      padding: 0 10px 0 0 !important;
+
+      &-separator {
+        display: none;
+      }
+    }
+
+      &__indicator &__dropdown-indicator {
+        width: 2.6rem;
+        height: 2.6rem;
+        margin-right: 1rem;
+        padding: 0 !important;
+        color: inherit;
+
+        svg {
+          width: 100%;
+          margin-top: -5px !important;
+          height: 100%;
+          stroke-width: 0.075rem;
+          stroke: #fff;
+        }
+      }
+
+    &__spinner {
+      font-family: 'Font Awesome 5 Free', sans-serif;
+      font-weight: 900;
+
+      &::before {
+        content: "\f110";
+      }
+    }
+
+    &.invalid {
+      border: 2px solid #d70000;
+    }
+  }
+}
+
+
+@media screen and (max-width: 388px) {
+  .combobox {
+    &__label {
+      display: none;
+    }
+  }
+}
