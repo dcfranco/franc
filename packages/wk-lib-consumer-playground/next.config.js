@@ -9,7 +9,7 @@ module.exports = withTM({
     config.resolve.alias = {
       ...config.resolve.alias,
       // Will make webpack look for these modules in parent directories
-      '@weknow-network/wk-lib-playground': path.resolve(__dirname, '..', 'packages', 'wk-lib-playground'),
+      '@weknow-network/wk-lib-playground': process.env.NODE_ENV === 'development' ?  path.resolve(__dirname, '..', 'packages', 'wk-lib-playground', 'src') : path.resolve(__dirname, '..', 'packages', 'wk-lib-playground'),
       // ...
     };
     return config;

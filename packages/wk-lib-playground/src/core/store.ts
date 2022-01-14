@@ -3,12 +3,18 @@ import {
   configureStore,
   ThunkAction,
 } from '@reduxjs/toolkit';
-
+import { DbPanelApi, SchematicsApi } from '../components/organisms';
+import { PanelApi } from '../components/atoms/Panel'
+import { FeatureApi } from '../components/atoms/Feature'
 export const store = configureStore({
   reducer: {
-// This is where we add reducers.
-// Since we don't have any yet, leave this empty
+    [DbPanelApi.reducerPath]: DbPanelApi.reducer,
+    [SchematicsApi.reducerPath]: SchematicsApi.reducer,
+    [PanelApi.reducerPath]: PanelApi.reducer,
+    [FeatureApi.reducerPath]: FeatureApi.reducer
   },
+  middleware: (getDefaultMiddleware) => 
+    getDefaultMiddleware().concat(SchematicsApi.middleware, DbPanelApi.middleware, PanelApi.middleware, FeatureApi.middleware)
 });
 
 export type AppDispatch = typeof store.dispatch;
@@ -19,3 +25,5 @@ export type AppThunk<ReturnType = void> = ThunkAction<
    unknown,
    Action<string>
  >;
+
+ export default store;

@@ -11,4 +11,6 @@ export interface SchematicObjectPartial {
   type?: 'PANEL' | 'DBPANEL' | 'FUNCTION';
   updatedAt?: string;
   updatedBy?: string;
+
+  [key: string]: any;
 }

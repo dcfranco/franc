@@ -8,7 +8,7 @@ const Container: NextPage<{
   overflowVisible?: boolean
 }> = ({ children, overflowVisible }) => {
   return (
-    <div className={classNames("h-100 d-flex flex-column justify-content-between align-items-start", {
+    <div className={classNames("h-100 d-flex flex-column justify-content-between align-items-start f-container", {
       "overflow-hidden": !overflowVisible
     })}>
       {children}

@@ -27,7 +27,7 @@ export default [
         sourcemap: true,
       },
     ],
-    external: ['classnames', 'lodash.debounce', 'react-datepicker', 'react-fast-compare'],
+    external: ['classnames', 'lodash.debounce', 'react-datepicker', 'react-redux', '@reduxjs/toolkit', '@reduxjs/toolkit/query/react', 'react-fast-compare'],
     plugins: [
       peerDepsExternal(),
       typescript({
@@ -48,6 +48,7 @@ export default [
       }),
       babel({
         exclude: 'node_modules/**',
+        runtimeHelpers: true
       }),
       resolve(),
       commonjs(),
@@ -84,7 +85,7 @@ export default [
           { find: 'core', replacement: path.resolve(projectRootDir, 'src', 'core') }
         ]
       })],
-    external: [/\.(module\.css|css|less|scss)$/, 'classnames', 'lodash.debounce', 'react-datepicker', 'react-fast-compare'],
+    external: [/\.(module\.css|css|less|scss)$/, 'classnames', 'lodash.debounce', 'react-datepicker', 'react-redux' , '@reduxjs/toolkit', '@reduxjs/toolkit/query/react', 'react-fast-compare'],
     resolve: {
       
     }

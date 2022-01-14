@@ -29,7 +29,7 @@ const TableRecord: FC<Props> = (props) => {
     >
       {columns.map((col, i) => {
         const key = col.name;
-        const value = [ViewAttributeComponentEnum.COMBO].includes(col.component)
+        const value = [ViewAttributeComponentEnum.COMBO].includes(col.component) && col.options
           ? col.options.filter((op) => op.value === record[key])[0]
           : record[key];
         return (

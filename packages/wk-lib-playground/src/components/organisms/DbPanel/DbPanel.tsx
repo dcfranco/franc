@@ -4,10 +4,20 @@ import { Grid, DetailForm } from '../../molecules';
 import { Button } from '../../atoms';
 import { DetailFormStateEnum } from '../../molecules/DetailForm/DetailForm';
 import './DbPanel.scss';
+import SchematicsHandler from '../Schematics/SchematicsHandler';
+
+export enum DbPanelEvents {
+  onActivate,
+  onSelectRecord,
+  onStateChange
+}
+
+export type DbPanelHandler = SchematicsHandler<DbPanelEvents, any>;
 
 type Props = {
   metadata: DbPanelWithRelations;
   records: any[];
+  handler: DbPanelHandler
 };
 
 enum ViewEngineDbPanelStateEnum {
@@ -16,7 +26,7 @@ enum ViewEngineDbPanelStateEnum {
   NEW = 'NEW',
 }
 
-const DbPanel: FC<Props> = ({ metadata, records }) => {
+const DbPanel: FC<Props> = ({ metadata, records, handler }) => {
   const [state, changeState] = useState<
     ViewEngineDbPanelStateEnum | DetailFormStateEnum
   >(ViewEngineDbPanelStateEnum.GRID);
@@ -47,7 +57,6 @@ const DbPanel: FC<Props> = ({ metadata, records }) => {
             </Button>
             <Button
               type="link"
-              disabled={selectedRecord}
               onClick={() => changeState(DetailFormStateEnum.NEW)}
               size="sm"
             >
@@ -65,7 +74,10 @@ const DbPanel: FC<Props> = ({ metadata, records }) => {
                 : selectRecord(rec)
             }
             selectedRecord={selectedRecord}
-            onDblClick={() => changeState(DetailFormStateEnum.EDIT)}
+            onDblClick={(rec) => {
+              handler.trigger(DbPanelEvents.onSelectRecord, rec)
+              selectRecord(rec);
+            }}
           />
         </>
       ) : (

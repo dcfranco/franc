@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.lib.build.json",
   "compilerOptions": {
+    "downlevelIteration": true,
     "jsx": "react",                                      /* Specify what JSX code is generated. */
                    /* Disable erasing `const enum` declarations in generated code. */
     "declarationDir": "types",                           /* Specify the output directory for generated declaration files. */

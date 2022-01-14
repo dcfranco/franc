@@ -6,6 +6,7 @@
   ],
   "scripts": {
     "dev": "lerna run --parallel dev",
+    "app:start": "lerna run --scope @weknow-network/wk-lib-consumer-playground start",
     "build": "lerna run --stream --parallel build",
     "build-sync": "lerna run build",
     "lint": "lerna run --stream --parallel lint",

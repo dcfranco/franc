@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.lib.build.json",
   "compilerOptions": {
+    "downlevelIteration": true,
     "declarationDir": "types",                           /* Specify the output directory for generated declaration files. */
     "plugins": [
       {

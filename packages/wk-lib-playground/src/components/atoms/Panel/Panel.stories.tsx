@@ -4,6 +4,7 @@ import Panel from './Panel';
 import { Feature } from '../';
 import { Container } from '../Container';
 import { Navbar } from '../Navbar';
+import { PanelSizeEnum } from '../../../interfaces/panel-with-relations';
 
 export default {
   title: 'Components/Atoms/Panel',
@@ -29,7 +30,7 @@ const Template: ComponentStory<typeof Feature> = () => {
     <Container>
       <Navbar features={features} />
       <Feature>
-        <Panel size={6}>
+        <Panel size={PanelSizeEnum.TWO}>
             <div>The content will be rendered here</div>
         </Panel>
       </Feature>

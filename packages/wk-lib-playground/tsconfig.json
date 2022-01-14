@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.lib.json",
   "compilerOptions": {
+    "downlevelIteration": true,
     "baseUrl": ".",
     "paths": {
       "components/*": ["src/components/*"],

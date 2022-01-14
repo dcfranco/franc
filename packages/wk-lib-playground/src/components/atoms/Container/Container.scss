@@ -1,6 +1,8 @@
 @import '../../common.scss';
 
-
+.f-container {
+  height: 100% !important;
+}
 .message {
   display: flex;
   justify-content: center;

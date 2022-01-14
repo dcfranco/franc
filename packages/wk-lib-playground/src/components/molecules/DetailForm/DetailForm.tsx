@@ -31,9 +31,6 @@ const DetailForm: NextPage<{
           >
         >((fieldsFromAttributes, field) => {
           if (field.isVisible !== false) {
-            const value =
-              state === DetailFormStateEnum.NEW ? null : record[field.name];
-            field.defaultValue = value;
             const row = fieldsFromAttributes.find(
               (lin) => lin.line === field.line
             );
@@ -64,7 +61,7 @@ const DetailForm: NextPage<{
     return [];
   }, [attributes, pkFieldName]);
   return (
-    <Formik initialValues={record || {}} onSubmit={() => {}}>
+    <Formik initialValues={state !== DetailFormStateEnum.NEW ? (record || {}) : {}} onSubmit={() => {}}>
       <form className="detail-form">
         {rows.length > 0 &&
           rows.map((row) => {

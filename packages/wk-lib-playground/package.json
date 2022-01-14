@@ -83,6 +83,7 @@
     "dist"
   ],
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.16.8",
     "@reduxjs/toolkit": "^1.7.1",
     "@rollup/plugin-alias": "^3.1.8",
     "@storybook/addon-interactions": "^6.4.9",
@@ -98,6 +99,7 @@
     "next-transpile-modules": "^9.0.0",
     "node-sass": "^7.0.0",
     "react-datepicker": "^4.6.0",
+    "react-redux": "^7.2.6",
     "react-select": "^5.2.1",
     "rollup-plugin-alias": "^2.2.0",
     "sass": "^1.45.1",
