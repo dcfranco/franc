@@ -23,6 +23,11 @@ class SchematicsHandler<E, V> implements SchematicsHandlerInterface<E, V> {
     }
   }
 
+  private hasCallback(listinerIndex: number, callback: (value: V) => void): boolean {
+    const inx = this.listeners[listinerIndex].callbacks.findIndex((cb) => cb.toString() === callback.toString());
+    return inx >= 0;
+  }
+
   private hasListener(listenerName: E): number | null {
     const listenerIndex = this.listeners.findIndex((ls) => ls.name === listenerName)
     if (listenerIndex >= 0)
@@ -32,23 +37,26 @@ class SchematicsHandler<E, V> implements SchematicsHandlerInterface<E, V> {
 
   public trigger(name: E, value: V): void {
     const listener = this.hasListener(name);
-    if (listener === null)
-      throw new Error("Listener not found.");
-    this.triggerCallbacks(this.listeners[listener], value)
+    if (listener !== null)
+      this.triggerCallbacks(this.listeners[listener], value)
   }
 
   public addEventListener(name: E, callback: (value: V) => void): void {
     const listener = this.hasListener(name);
     if (listener === null)
       return void this.listeners.push({ name, callbacks: [callback]})
-    this.listeners[listener].callbacks.push(callback);
+    if (!this.hasCallback(listener, callback))
+      this.listeners[listener].callbacks.push(callback);
   }
 
   public removeEventListener(name: E, callback: (value: V) => void): void {
     const listener = this.hasListener(name);
-    if (listener === null)
-      throw new Error("Listener not found.");
+    if (listener !== null)
     this.listeners[listener].callbacks = this.listeners[listener].callbacks.filter(c => c.name === callback.name)
+  }
+  
+  public getListenersLength(): number {
+    return this.listeners.length;
   }
 }
 

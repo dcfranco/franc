@@ -4,7 +4,6 @@ import { FilterBuilder } from '../../../../builders/Filter';
 import { DbPanelFactory, PanelFactory, FeatureFactory } from '.';
 import { useGetQuery } from '../Schematics.api';
 import { SchematicsTree } from '../SchematicsTree';
-import Schematics from '../Schematics';
 
 const filter = new FilterBuilder<SchematicObjectWithRelations>({
   include: [{
@@ -18,9 +17,10 @@ const filter = new FilterBuilder<SchematicObjectWithRelations>({
 type Props = {
   id: number,
   schematic?: SchematicsTree<any, any>
+  test?: any,
 };
 
-const SchematicFactory: FC<Props> = ({ id, schematic }) => {
+const SchematicFactory: FC<Props> = ({ id, schematic, test }) => {
   const { data, isLoading } = useGetQuery({ id: id, filter })
   const schematics = useMemo<SchematicsTree<any, any>>(() => {
     if (!schematic) {
@@ -28,27 +28,19 @@ const SchematicFactory: FC<Props> = ({ id, schematic }) => {
         ...data,
         level: 0
       })
-    } else if (data && data.id === id && schematic.value.id !== id && !isLoading) {
+    } else if (data && data.id === id && schematic && schematic.value.id !== id && !isLoading) {
       return schematic.appendChild(new SchematicsTree<any, any>({...data, level: schematic.value.level + 1}))
     }
-  }, [data])
+  }, [data, schematic, id])
   if (isLoading || !data) {
     return null;
   }
 
   switch (schematics.value.type) {
     case SchematicObjectTypeEnum.DBPANEL:
-    {
-      debugger
-
-      if (schematic.value.type === SchematicObjectTypeEnum.DBPANEL)
-        return <Schematics id={schematic.value.childs[0].id} schematic={schematic} />
-      return <DbPanelFactory schematic={schematics} />
-    }
-    case SchematicObjectTypeEnum.PANEL: {
-      debugger
+      return <DbPanelFactory schematic={schematics} test={test} />
+    case SchematicObjectTypeEnum.PANEL:
       return <PanelFactory schematic={schematics} />
-    }
     case SchematicObjectTypeEnum.FUNCTION:
       return <FeatureFactory schematic={schematics} />
     default:

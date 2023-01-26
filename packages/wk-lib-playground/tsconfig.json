@@ -3,6 +3,7 @@
   "compilerOptions": {
     "downlevelIteration": true,
     "baseUrl": ".",
+    "rootDir": "src",
     "paths": {
       "components/*": ["src/components/*"],
       "constants/*": ["src/constants/*"],

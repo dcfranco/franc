@@ -9,7 +9,8 @@ import SchematicsHandler from '../Schematics/SchematicsHandler';
 export enum DbPanelEvents {
   onActivate,
   onSelectRecord,
-  onStateChange
+  onStateChange,
+  onDblClick,
 }
 
 export type DbPanelHandler = SchematicsHandler<DbPanelEvents, any>;
@@ -67,15 +68,18 @@ const DbPanel: FC<Props> = ({ metadata, records, handler }) => {
             records={records}
             view={view}
             table={table}
-            onSelect={(rec) =>
-              selectedRecord &&
-              selectedRecord[table.pkField] === rec[table.pkField]
-                ? selectRecord(null)
-                : selectRecord(rec)
+            onSelect={(rec) => {
+              if (selectedRecord && selectedRecord[table.pkField] === rec[table.pkField]) {
+                selectRecord(null)
+              } else {
+                selectRecord(rec)
+                handler.trigger(DbPanelEvents.onSelectRecord, rec)
+              }
+            }
             }
             selectedRecord={selectedRecord}
             onDblClick={(rec) => {
-              handler.trigger(DbPanelEvents.onSelectRecord, rec)
+              handler.trigger(DbPanelEvents.onDblClick, rec)
               selectRecord(rec);
             }}
           />

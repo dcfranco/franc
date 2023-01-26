@@ -31,7 +31,7 @@ const Grid: FC<Props> = ({
     <Table>
       <TableHead>
         {view.attributes.map((field) => {
-          return <TableColumn name={field.name}>{field.label}</TableColumn>;
+          return <TableColumn key={field.id} name={field.name}>{field.label}</TableColumn>;
         })}
       </TableHead>
       <TableBody>

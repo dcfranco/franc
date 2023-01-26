@@ -5,12 +5,13 @@ import './Schematics.scss';
 
 type Props = {
   id: number;
+  test?: any;
   schematic?: SchematicsTree<any, any>
 };
 
-const Schematics: FC<Props> = ({ id, schematic }) => {
+const Schematics: FC<Props> = ({ id, schematic, test }) => {
   return (
-    <SchematicsFactory id={id} schematic={schematic} />
+    <SchematicsFactory id={id} schematic={schematic} test={test} />
   )
 };
 

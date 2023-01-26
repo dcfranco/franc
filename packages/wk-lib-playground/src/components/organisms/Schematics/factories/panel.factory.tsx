@@ -14,11 +14,24 @@ const PanelFactory: FC<Props> = ({ schematic }) => {
   const { data: metadata, isLoading } = useGetQuery({
     id: schematic.value.handlerId,
   });
-  const [openedChils, setOpenChilds] = useState<Array<number>>([schematic.value.childs[0].id])
+  const [openedChils, setOpenChilds] = useState<Array<{
+    id: number;
+    record?: any;
+    parent: SchematicsTree<any, any>;
+  }>>([{
+    id: schematic.value.childs[0].id,
+    parent: schematic,
+  }])
 
   const onOpenChild =  useCallback((inx) => {
-    setOpenChilds([].concat(openedChils, schematic.next.value.childs[0].id))
-  }, [openedChils]);
+    if (inx.schematic.id) {
+      setOpenChilds((state) => [].concat(state, {
+        id: inx.schematic.id,
+        record: inx.record,
+        parent: inx.parent
+      }))
+    }
+  }, [openedChils, schematic]);
 
   useEffect(() => {
     schematic.handler.addEventListener(PanelEvents.onOpenChild, onOpenChild)
@@ -27,11 +40,12 @@ const PanelFactory: FC<Props> = ({ schematic }) => {
   if (isLoading) {
     return <div>Loading..</div>;
   }
+
   return (
     <>
-      {openedChils.map((inx) => (
-        <Panel size={openedChils.length > 1 ? PanelSizeEnum.TWO : metadata.size}>
-          <Schematics id={inx} schematic={schematic} />
+      {openedChils.slice(-2).map((inx) => (
+        <Panel key={inx.id} size={openedChils.length > 1 ? PanelSizeEnum.TWO : metadata.size}>
+          <Schematics id={inx.id} schematic={inx.parent} test={inx.record} />
         </Panel>
       ))}
     </>

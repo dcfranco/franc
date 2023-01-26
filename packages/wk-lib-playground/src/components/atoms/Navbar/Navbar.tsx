@@ -15,6 +15,7 @@ const Navbar: NextPage<{
       {features.map((feature) => {
         return (
           <div
+            key={feature.id}
             className={classNames('feature-name', {
               selected: feature.selected,
             })}

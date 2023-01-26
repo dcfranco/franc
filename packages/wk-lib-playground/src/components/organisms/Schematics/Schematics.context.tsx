@@ -4,7 +4,7 @@ import './Schematics.scss';
 import { SchematicsTree } from './SchematicsTree';
 
 export type SchematicsContextType = {
-  schematics: SchematicsTree<any>
+  schematics: SchematicsTree<any, any>
 }
 
 export const SchematicsContext = createContext<SchematicsContextType>({

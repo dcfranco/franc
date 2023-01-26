@@ -17,6 +17,6 @@
     "app:build": "lerna run --stream --scope @weknow-network/wk-lib-consumer-playground build"
   },
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "lerna": "4.0.0"
   }
 }

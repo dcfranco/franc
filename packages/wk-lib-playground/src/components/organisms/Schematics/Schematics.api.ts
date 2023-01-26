@@ -3,7 +3,6 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 import { SchematicObjectWithRelations } from '../../../interfaces/schematic-object-with-relations';
 import baseApi from '../../../core/api';
 import { Filter } from '../../../builders/Filter';
-import { RequestBuilder } from '../../../builders/Request';
 
 // Define a service using a base URL and expected endpoints
 const schematicsApi = createApi({

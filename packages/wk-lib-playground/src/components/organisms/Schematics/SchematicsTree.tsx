@@ -1,11 +1,12 @@
 import { SchematicObjectWithRelations } from '../../../interfaces/schematic-object-with-relations';
 import SchematicsHandler from './SchematicsHandler';
 
-export class SchematicsTree<E, T> {
+export class SchematicsTree<E, T, M = any> {
   private _parent?: this
   private _children: this[] = []
   private _index?: number;
   private _handler: SchematicsHandler<E, T>;
+  private _metadata: M;
   private _value?: SchematicObjectWithRelations
 
   constructor(value?: SchematicObjectWithRelations) {
@@ -32,6 +33,14 @@ export class SchematicsTree<E, T> {
 
   set handler(_handler: SchematicsHandler<E, T>) {
     this._handler = _handler;
+  }
+
+  get metadata(): M {
+    return this._metadata;
+  }
+
+  set metadata(_metadata: M) {
+    this._metadata = _metadata;
   }
   
   get index(): number | undefined {
@@ -199,6 +208,7 @@ export class SchematicsTree<E, T> {
 
   private reparent(newParent: this) {
     this.remove()
+    console.log(this);
     this._parent = newParent
   }
 }
